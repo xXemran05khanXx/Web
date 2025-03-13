@@ -1,0 +1,349 @@
+/* ===================== GLOBAL STYLES ===================== */
+@font-face {
+  font-family: 'monserrat';
+  src: url(/xenith/Font/Montserrat/Montserrat-Italic-VariableFont_wght.ttf);
+}
+@font-face {
+  font-family: 'gilroy';
+  src: url(/xenith/Font/Gilroy/Gilroy/Gilroy-ExtraBold.otf);
+}
+
+:global(#root) {
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  font-family: 'Gilroy','Montserrat';
+  background-color: #222;
+}
+
+/* ===================== NAVIGATION BAR ===================== */
+.nav {
+  height: 150px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 150px;
+  gap: 50px;
+  justify-content: flex-start;
+  position: fixed;
+  z-index: 9999; 
+}
+
+.nav img {
+  height: 50px;
+  margin: 25px;
+}
+
+.nav h4 {
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+/* ===================== CUSTOM CURSOR ===================== */
+.cursor {
+  height: 20px;
+  width: 20px;
+  background-color: #ceff86;
+  border-radius: 50%;
+  position: fixed;
+  z-index: 99; 
+  transform: translate(-50%, -50%);
+  pointer-events: none; 
+}
+
+.cursor_blur {
+  height: 200px;
+  width: 200px;
+  background-color: rgb(172, 209, 98);
+  border-radius: 50%;
+  position: fixed;
+  filter: blur(100px);
+  z-index: 9;
+}
+
+/* ===================== BACKGROUND VIDEO ===================== */
+.bgVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  transition: opacity 1s ease-in-out;
+  will-change: opacity;
+}
+
+.blackBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  opacity: 0;
+  will-change: opacity;
+}
+/* ===================== MAIN CONTAINER ===================== */
+.main {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* ===================== PAGE 1 (HERO SECTION) ===================== */
+.page1 {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  z-index: 10;
+  position: relative; /* Ensures the pseudo-element positions correctly */
+}
+
+.page1 h1 {
+  font-size: 60px;
+  font-weight: 900;
+  position: relative; /* Needed for the ::before element */
+}
+
+.page1 h1::before {
+  content: "EXPERIENCE. INNOVATE. CELEBRATE.";
+  position: absolute;
+  color: black;
+  top: -6px;
+  left: -6px;
+  -webkit-text-stroke: 2px #22921c;
+  z-index: -1; /* Ensures the text stroke is behind */
+}
+
+
+.page1 h2 {
+  color: #ADFF2F;
+  font-size: 30px;
+  font-weight: 900;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.page1 p {
+  font-size: 15px;
+  font-weight: 800;
+  width: 30%;
+}
+
+/* ===================== PAGE 2 ===================== */
+.page2 {
+  height: 100vh;
+  width: 100%;
+  z-index: 10;
+}
+
+/* ===================== SCROLLER ===================== */
+@keyframes scroller {
+  0% {
+      transform: translateX(0);
+  }
+  100% {
+      transform: translateX(-100%);
+  }
+}
+
+.scroller {
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  z-index: 10;
+  position: relative;
+}
+
+.scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollerIn {
+  display: inline-block;
+  white-space: nowrap;
+  animation-name: scroller;
+  animation-duration: 30s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+}
+
+.scrollerIn h4 {
+  font-size: 140px;
+  font-weight: 900;
+  display: inline-block;
+  margin-right: 10px;
+  font-family: "gilroy";
+  color: rgba(0, 0, 0, 0);
+  -webkit-text-stroke: 2px greenyellow;
+  transition: color 0.5s ease; 
+  margin-bottom: 100px;
+}
+
+.scrollerIn h4:hover {
+  color: greenyellow;
+}
+
+/* ===================== ABOUT US ===================== */
+.aboutUs {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+  height: 40vh;
+  padding: 0 50px;
+  align-items: center;
+}
+
+.aboutUs img {
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+}
+
+/* ===================== Image Slider ===================== */
+.slider {
+  width: 100%;
+  height: var(--height);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 800px;
+  mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+}
+
+.list {
+  display: flex;
+  width: calc(2 * var(--quantity) * var(--width));
+  animation: slide 20s linear infinite;
+  transform-style: preserve-3d;
+  gap: 50px;
+}
+
+.item {
+  flex-shrink: 0;
+  width: var(--width);
+  height: var(--height);
+  transition: transform 5s ease-in-out;
+}
+
+.item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50%)); 
+  }
+}
+
+
+
+/* Duplicating the first set of images to ensure smooth looping */
+.list::after {
+  content: "";
+  display: flex;
+  width: calc(var(--quantity) * var(--width));
+}
+
+
+/* ===================== About Us Event Text ===================== */
+.aboutUsIn {
+  background: rgba(0, 0, 0, 0.5);
+  -webkit-backdrop-filter: blur(10px); 
+  backdrop-filter: blur(10px); 
+  padding: 20px;
+  border-radius: 12px; 
+  color: white;
+  position: absolute; 
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2; /* Keeps it above the background slider */
+  width: 60%; /* Adjust width to prevent excessive blocking */
+  text-align: center;
+}
+
+/* Subtle hover effect */
+.aboutUsIn:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+.aboutUsIn h3 {
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  margin-bottom: 20px;
+  color: #ADFF2F;
+}
+
+/* ===================== SPONSERS ===================== */
+
+
+.sponsors {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.sponsor-list {
+  display: flex;
+  gap: 40px; /* Space between logos */
+  width: fit-content;
+  transition: transform 0.5s ease-in-out;
+}
+
+.sponsor-item img {
+  height: 80px; /* Adjust as needed */
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.sponsor-item img:hover {
+  filter: grayscale(0%);
+}
+
+/* Hover effect to move the slider */
+.sponsors:hover .sponsor-list {
+  animation: scrollSponsors 10s linear infinite;
+}
+
+@keyframes scrollSponsors {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
