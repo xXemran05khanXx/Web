@@ -347,3 +347,65 @@ html, body {
     transform: translateX(-50%);
   }
 }
+
+/* ===================== About Events ===================== */
+
+
+.aboutEvent {
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 60px 20px;
+  text-align: left;
+  border-radius: 12px;
+  max-width: 800px;
+  margin: auto;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #5ae33c;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #5be33cb2;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.statBox {
+  background: rgba(90, 227, 60, 0.2);
+  border: 1px solid #5ae33c;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  width: 150px;
+  transition: 0.3s;
+}
+
+.statBox:hover {
+  background: rgba(90, 227, 60, 0.5);
+}
+
+.statIcon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 10px;
+}

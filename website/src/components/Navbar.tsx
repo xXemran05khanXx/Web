@@ -1,21 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useNavigate } from "react-router-dom";
 import styles from "../style/navbar.module.css";
-import ChatIcon from "../assets/chat-round-line.svg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Navbar: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
     gsap.to("#nav", {
-      backgroundColor: "rgba(90, 227, 60, 0.5)",
+      backgroundColor: "rgba(90, 227, 60, 0.3)",
       backdropFilter: "blur(10px)",
-      height: "80px",
+      height: "90px",
       duration: 0.5,
       scrollTrigger: {
         trigger: "body",
-        start: "top -10%",
+        start: "top -5%",
         end: "top -11%",
         scrub: 1,
       },
@@ -34,12 +37,21 @@ const Navbar: React.FC = () => {
           </h4>
         ))}
       </div>
+      <div className={styles.dropdown}>
+          <button className={styles.dropdownButton} onClick={() => setIsOpen(!isOpen)}>
+            <img src="src/assets/down-arrow.png" style={{ width: "20px" }} alt="Menu" />
+          </button>
+          {isOpen && (
+            <div className={styles.dropdownList}>
+              {["Home", "Social", "Sport"].map((item) => (
+                <div key={item} className={styles.dropdownItem} onClick={() => handleNavigation(`/${item.toLowerCase()}`)}>
+                  {item}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
 
-      <div className={styles.icon_button}>
-        <img src={ChatIcon} alt="Chat Icon" className={styles.icon} />
-        <h4 className={styles.icon}>😀</h4>
-        <h4 className={styles.icon}>😀</h4>
-      </div>
     </nav>
 
   );
