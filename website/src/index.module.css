@@ -205,6 +205,7 @@ html, body {
 /* ===================== ABOUT US ===================== */
 .aboutUs {
   display: flex;
+  position: relative;
   justify-content: space-around;
   margin-top: 50px;
   height: 40vh;
@@ -221,7 +222,7 @@ html, body {
 /* ===================== Image Slider ===================== */
 .slider {
   width: 100%;
-  height: var(--height);
+  height: 100vh;
   overflow: hidden;
   position: relative;
   display: flex;
@@ -249,7 +250,7 @@ html, body {
 
 .item img {
   width: 100%;
-  height: 100%;
+  height: 70%;
   object-fit: cover;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -280,11 +281,12 @@ html, body {
   background: rgba(0, 0, 0, 0.5);
   -webkit-backdrop-filter: blur(10px); 
   backdrop-filter: blur(10px); 
-  padding: 20px;
-  border-radius: 12px; 
+  padding: 30px;
+  border-radius: 15px; 
   color: white;
   position: absolute; 
   left: 50%;
+  margin-bottom: 150px;
   transform: translateX(-50%);
   z-index: 2; /* Keeps it above the background slider */
   width: 60%; /* Adjust width to prevent excessive blocking */
@@ -408,4 +410,17 @@ html, body {
   width: 60px;
   height: 60px;
   margin-bottom: 10px;
+}
+
+/* ===================== Page 3 ===================== */
+.page3 {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  z-index: 10;
+  position: relative; /* Ensures the pseudo-element positions correctly */
 }

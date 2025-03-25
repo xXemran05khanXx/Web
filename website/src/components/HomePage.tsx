@@ -2,6 +2,7 @@ import React, { useEffect, useLayoutEffect, useRef } from "react";
 import styles from "../index.module.css";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import EventsCard from "./EventsCard";
 
 const HomePage: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -169,9 +170,16 @@ const HomePage: React.FC = () => {
                 throughout the year. From hackathons to workshops, we have something for everyone!
               </p>
             </div>
+            {/* Event Info with Blurred Background */}
+
           </div>
         </div>
-      </div>
+        
+        <div className={styles.page3}>
+          {EventsCard()} 
+        </div>
+
+      </div>           
     </div>
   );
 };

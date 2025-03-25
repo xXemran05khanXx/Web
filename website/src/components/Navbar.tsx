@@ -1,15 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useNavigate } from "react-router-dom";
 import styles from "../style/navbar.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-
+// Register GSAP ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
+
+// Import assets properly
+import logo from "../assets/xenith_logo.png";
+import dropdownGif from "../assets/down-arrow.gif";
+import homeGif from "../assets/home.gif";
+//import socialGif from "../assets/social.gif";
+//import sportGif from "../assets/sport.gif";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [gifKey, setGifKey] = useState(0); // Key to restart animation
+
+  const handleNavigation = (path: string) => {
+    window.location.href = path;
+  };
+
   useEffect(() => {
     gsap.to("#nav", {
       backgroundColor: "rgba(90, 227, 60, 0.3)",
@@ -25,10 +36,16 @@ const Navbar: React.FC = () => {
     });
   }, []);
 
+  const dropdownItems = [
+    { name: "Home", icon: homeGif },
+   // { name: "Social", icon: socialGif },
+   // { name: "Sport", icon: sportGif },
+  ];
+
   return (
     <nav id="nav" className={styles.nav}>
       {/* Fixed logo path */}
-      <img src="src/assets/xenith_logo.png" alt="Xenith Logo" className={styles.logo} />
+      <img src={logo} alt="Xenith Logo" className={styles.logo} />
 
       <div className={styles.navItems}>
         {["Gallery", "Upcoming", "Members", "About", "Contact"].map((item) => (
@@ -37,23 +54,33 @@ const Navbar: React.FC = () => {
           </h4>
         ))}
       </div>
+
+      {/* Dropdown Menu */}
       <div className={styles.dropdown}>
-          <button className={styles.dropdownButton} onClick={() => setIsOpen(!isOpen)}>
-            <img src="src/assets/down-arrow.png" style={{ width: "20px" }} alt="Menu" />
-          </button>
-          {isOpen && (
-            <div className={styles.dropdownList}>
-              {["Home", "Social", "Sport"].map((item) => (
-                <div key={item} className={styles.dropdownItem} onClick={() => handleNavigation(`/${item.toLowerCase()}`)}>
-                  {item}
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
+        <button
+          className={styles.dropdownButton}
+          onClick={() => setIsOpen(!isOpen)}
+          onMouseEnter={() => setGifKey((prevKey) => prevKey + 1)} // Restart GIF on hover
+        >
+          <img key={gifKey} src={dropdownGif} style={{ width: "20px" }} alt="Menu" />
+        </button>
 
+        {isOpen && (
+          <div className={styles.dropdownList}>
+             {dropdownItems.map((item) => (
+              <div
+                key={item.name}
+                className={styles.dropdownItem}
+                onClick={() => handleNavigation(`/${item.name.toLowerCase()}`)}
+              >
+                <img src={item.icon} alt={`${item.name} icon`} className={styles.iconGif} />
+                {item.name}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </nav>
-
   );
 };
 
