@@ -173,12 +173,11 @@ const HomePage: React.FC = () => {
             {/* Event Info with Blurred Background */}
 
           </div>
-        </div>
-        
-        <div className={styles.page3}>
-          {EventsCard()} 
-        </div>
 
+          <div className= {styles.page3}>             
+                 {EventsCard()} 
+          </div>
+        </div>
       </div>           
     </div>
   );

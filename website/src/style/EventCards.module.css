@@ -1,84 +1,80 @@
 /* Full Website Container */
 .websiteContainer {
-    transition: filter 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+/* Container for the cards */
+.cardContainer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px;
+  position: relative;
+}
+
+/* Base card styling */
+.card {
+  width: 200px;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: 2px solid rgba(90, 227, 60, 0.8);
+  transition: all 0.3s ease-in-out;
+  font-family: 'Gilroy', sans-serif;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Hover effect for non-focused cards */
+.websiteContainer.blurred .card {
+  filter: blur(5px);
+  transform: scale(0.95);
+  opacity: 0.7;
+}
+
+/* Focused card styling */
+.focused {
+  filter: blur(0) !important;
+  transform: scale(1.1) !important;
+  opacity: 1 !important;
+  z-index: 2;
+  box-shadow: 0 0 30px rgba(90, 227, 60, 0.5);
+}
+
+/* Card title */
+.cardTitle {
+  font-size: 22px;
+  font-weight: bold;
+  color: #5ae33c;
+}
+
+/* Card year */
+.cardYear {
+  font-size: 18px;
+  margin-top: 8px;
+}
+
+/* "Coming Soon" card special effect */
+.comingSoon {
+  background: rgba(90, 227, 60, 0.15);
+  border: 2px dashed rgba(90, 227, 60, 0.7);
+  animation: pulse 1.5s infinite alternate;
+}
+
+/* "Coming Soon" Animation */
+@keyframes pulse {
+  from {
+    box-shadow: 0px 0px 8px rgba(90, 227, 60, 0.4);
   }
-  
-  /* Blur effect when a card is hovered */
-  .blurred {
-    filter: blur(10px);
-    pointer-events: none;
+  to {
+    box-shadow: 0px 0px 15px rgba(90, 227, 60, 0.8);
   }
-  
-  /* Container for the cards */
-  .cardContainer {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    padding: 20px;
-    position: relative;
-  }
-  
-  /* Base card styling */
-  .card {
-    width: 200px;
-    height: 350px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 12px;
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: 2px solid rgba(90, 227, 60, 0.8);
-    transition: transform 0.3s, box-shadow 0.3s;
-    font-family: 'Gilroy', sans-serif;
-    text-align: center;
-    z-index: 2;
-    pointer-events: auto;
-  }
-  
-  /* Hover effect */
-  .card:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 0px 15px rgba(90, 227, 60, 0.7);
-  }
-  
-  /* Card title */
-  .cardTitle {
-    font-size: 22px;
-    font-weight: bold;
-    color: #5ae33c;
-  }
-  
-  /* Card year */
-  .cardYear {
-    font-size: 18px;
-    margin-top: 8px;
-  }
-  
-  /* "Coming Soon" card special effect */
-  .comingSoon {
-    background: rgba(90, 227, 60, 0.15);
-    border: 2px dashed rgba(90, 227, 60, 0.7);
-    animation: pulse 1.5s infinite alternate;
-  }
-  
-  /* "Coming Soon" Animation */
-  @keyframes pulse {
-    from {
-      box-shadow: 0px 0px 8px rgba(90, 227, 60, 0.4);
-    }
-    to {
-      box-shadow: 0px 0px 15px rgba(90, 227, 60, 0.8);
-    }
-  }
-  
-  /* Focus effect: Remove blur only on hovered card */
-  .focused {
-    filter: blur(0);
-    transform: scale(1.1);
-    z-index: 3;
-    position: relative;
-  }
+}
   

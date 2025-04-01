@@ -149,9 +149,12 @@ html, body {
 
 /* ===================== PAGE 2 ===================== */
 .page2 {
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   z-index: 10;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ===================== SCROLLER ===================== */
@@ -208,7 +211,7 @@ html, body {
   position: relative;
   justify-content: space-around;
   margin-top: 50px;
-  height: 40vh;
+  height: 30vh;
   padding: 0 50px;
   align-items: center;
 }
@@ -293,9 +296,9 @@ html, body {
   text-align: center;
 }
 
-/* Subtle hover effect */
+/* Remove the hover effect that was causing movement */
 .aboutUsIn:hover {
-  transform: translate(-50%, -50%) scale(1.05);
+  transform: translateX(-50%);
 }
 
 .aboutUsIn h3 {
@@ -359,8 +362,9 @@ html, body {
   padding: 60px 20px;
   text-align: left;
   border-radius: 12px;
-  max-width: 800px;
+  max-width: 750px;
   margin: auto;
+  margin-bottom: 150px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
@@ -414,7 +418,7 @@ html, body {
 
 /* ===================== Page 3 ===================== */
 .page3 {
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -422,5 +426,6 @@ html, body {
   flex-direction: column;
   text-align: center;
   z-index: 10;
-  position: relative; /* Ensures the pseudo-element positions correctly */
+  position: relative;
+  margin-top: 50px;
 }
