@@ -3,6 +3,7 @@ import styles from "../index.module.css";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import EventsCard from "./EventsCard";
+import ChatbaseIntegration from "./ChatbaseIntegration";
 
 const HomePage: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -99,7 +100,8 @@ const HomePage: React.FC = () => {
       <video ref={videoRef} autoPlay muted loop className={styles.bgVideo}>
         <source src="/public/xenith_video.mp4" type="video/mp4" />
       </video>
-
+      
+      <ChatbaseIntegration/>
       {/* Black Background for fade-in effect */}
       <div ref={bgRef} className={styles.blackBackground}></div>
 

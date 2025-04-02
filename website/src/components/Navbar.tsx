@@ -18,7 +18,17 @@ const Navbar: React.FC = () => {
   const [gifKey, setGifKey] = useState(0); // Key to restart animation
 
   const handleNavigation = (path: string) => {
-    window.location.href = path;
+    if (path === "/social") {
+      window.location.href = "/social"; 
+      window.location.href = "http://localhost:3000";
+    }
+    else if (path === "/prediction") {
+      window.location.href = "/prediction"; 
+      window.location.href = "http://localhost:3000";
+    }
+    else {
+      window.location.href = path;
+    }
   };
 
   useEffect(() => {
@@ -38,22 +48,18 @@ const Navbar: React.FC = () => {
 
   const dropdownItems = [
     { name: "Home", icon: homeGif },
-   // { name: "Social", icon: socialGif },
+    { name: "Social", icon: homeGif },
    // { name: "Sport", icon: sportGif },
   ];
+
+  
 
   return (
     <nav id="nav" className={styles.nav}>
       {/* Fixed logo path */}
       <img src={logo} alt="Xenith Logo" className={styles.logo} />
 
-      <div className={styles.navItems}>
-        {["Gallery", "Upcoming", "Members", "About", "Contact"].map((item) => (
-          <h4 key={item} className={styles.navItem}>
-            {item}
-          </h4>
-        ))}
-      </div>
+  
 
       {/* Dropdown Menu */}
       <div className={styles.dropdown}>
