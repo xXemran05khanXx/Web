@@ -10,8 +10,8 @@ gsap.registerPlugin(ScrollTrigger);
 import logo from "../assets/xenith_logo.png";
 import dropdownGif from "../assets/down-arrow.gif";
 import homeGif from "../assets/home.gif";
-//import socialGif from "../assets/social.gif";
-//import sportGif from "../assets/sport.gif";
+import socialGif from "../assets/social.gif";
+import sportGif from "../assets/sport.gif";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,9 +22,9 @@ const Navbar: React.FC = () => {
       window.location.href = "/social"; 
       window.location.href = "http://localhost:3000";
     }
-    else if (path === "/prediction") {
-      window.location.href = "/prediction"; 
-      window.location.href = "http://localhost:3000";
+    else if (path === "/sport") {
+      window.location.href = "/sport"; 
+      window.location.href = "http://localhost:3002";
     }
     else {
       window.location.href = path;
@@ -48,8 +48,8 @@ const Navbar: React.FC = () => {
 
   const dropdownItems = [
     { name: "Home", icon: homeGif },
-    { name: "Social", icon: homeGif },
-   // { name: "Sport", icon: sportGif },
+    { name: "Social", icon: socialGif },
+    { name: "Sport", icon: sportGif },
   ];
 
   

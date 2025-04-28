@@ -1,0 +1,55 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Website - npm install",
+        "type": "shell",
+        "command": "cd website && npm install",
+        "presentation": { "panel": "new" }
+      },
+      {
+        "label": "Social - npm install",
+        "type": "shell",
+        "command": "cd social && npm install",
+        "presentation": { "panel": "new" }
+      },
+      {
+        "label": "Social Frontend - npm install & start",
+        "type": "shell",
+        "command": "cd social/frontend && npm install && npm start",
+        "presentation": { "panel": "new" }
+      },
+      {
+        "label": "Social Backend Keras - pip install & run model.py",
+        "type": "shell",
+        "command": "cd social/backend/keras_model && pip install -r requirements.txt && python model.py",
+        "presentation": { "panel": "new" }
+      },
+      {
+        "label": "Social Backend - npm install & node app.js",
+        "type": "shell",
+        "command": "cd social/backend && npm install && node app.js",
+        "presentation": { "panel": "new" }
+      },
+      {
+        "label": "Predict - npm install, node app.js, venv, prediction_api.py",
+        "type": "shell",
+        "command": "cd predict && npm install && node app.js && python -m venv myenvenv && source myenvenv/bin/activate && python prediction_api.py",
+        "presentation": { "panel": "new" }
+      },
+      {
+        "label": "Run All",
+        "dependsOn": [
+          "Website - npm install",
+          "Social - npm install",
+          "Social Frontend - npm install & start",
+          "Social Backend Keras - pip install & run model.py",
+          "Social Backend - npm install & node app.js",
+          "Predict - npm install, node app.js, venv, prediction_api.py"
+        ],
+        "dependsOrder": "parallel",
+        "presentation": { "panel": "new" }
+      }
+    ]
+  }
+  
